@@ -1,0 +1,42 @@
+<div class="container d-flex align-items-center justify-content-center mt-5">
+    <div class="w-100">
+        <div>
+            <h5 class="mb-4">Todo List</h5>
+        </div>
+        <div class="row">
+            <div  *ngIf="list.length > 0; else noData">
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th>First Name</th>
+                        <th>Middle Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of list">
+                        <td>{{item.firstName}}</td>
+                        <td>{{item.middleName}}</td>
+                        <td>{{item.lastName}}</td>
+                        <td>{{item.email}}</td>
+                        <td>{{item.phone}}</td>
+                        <td>
+                            <button class="btn btn-info me-2" [routerLink]="['/to-do','add',item.id]">View</button>
+                            <button class="btn btn-danger" (click)="deleteToDo(item.id)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <ng-template #noData>
+                <div>
+                    No Data
+                </div> 
+            </ng-template>
+        </div>
+    </div>
+
+</div>

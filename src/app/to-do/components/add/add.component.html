@@ -1,0 +1,63 @@
+<div class="container d-flex align-items-center justify-content-center mt-5">
+    <div class="w-50">
+        <h5 class="mb-4">To Do</h5>
+
+        <form [formGroup]="formGroup">
+            <div class="mb-3">
+                <div class="form-group">
+                    <label class="form-label">First Name</label>
+                    <input type="text" class="form-control" formControlName="firstName" placeholder="First Name">
+                    <ng-container *ngIf="fg.firstName.touched && fg.firstName.invalid">
+                        <small class="invalid" *ngIf="fg.firstName.errors?.required">Required</small>
+                    </ng-container>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group">
+                    <label class="form-label">Middle Name</label>
+                    <input type="text" class="form-control" formControlName="middleName" placeholder="Middle Name">
+                    <ng-container *ngIf="fg.middleName.touched && fg.middleName.invalid">
+                        <small class="invalid" *ngIf="fg.middleName.errors?.required">Required</small>
+                    </ng-container>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group">
+                    <label class="form-label">Last Name</label>
+                    <input type="text" class="form-control" formControlName="lastName" placeholder="Last Name">
+                    <ng-container *ngIf="fg.lastName.touched && fg.lastName.invalid">
+                        <small class="invalid" *ngIf="fg.lastName.errors?.required">Required</small>
+                    </ng-container>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="text" class="form-control" formControlName="email" placeholder="Email">
+                    <ng-container *ngIf="fg.email.touched && fg.email.invalid">
+                        <small class="invalid" *ngIf="fg.email.errors?.pattern">Please enter valid mail</small>
+                        <small class="invalid" *ngIf="fg.email.errors?.required">Required</small>
+                    </ng-container>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group">
+                    <label class="form-label">Phone</label>
+                    <input type="text" class="form-control" formControlName="phone" placeholder="Phone">
+                    <ng-container *ngIf="fg.phone.touched && fg.phone.invalid">
+                        <small class="invalid" *ngIf="fg.phone.errors?.required">Required</small>
+                        <small class="invalid" *ngIf="fg.phone.errors?.pattern">Please enter valid phone number</small>
+                    </ng-container>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-primary" (click)="addToDo()" [disabled]="this.formGroup.invalid || isSubmitted">
+                <span *ngIf="isSubmitted" class="spinner-border spinner-border-sm me-2"></span>Submit
+            </button>
+        </form>
+    </div>
+</div>

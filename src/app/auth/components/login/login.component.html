@@ -1,0 +1,31 @@
+<div class="container d-flex align-items-center justify-content-center mt-5">
+    <div class="w-50">
+      <form [formGroup]="formGroup">
+        <div>
+            <div class="mb-3">
+                <div class="input-group">
+                    <input type="email" class="form-control" [ngClass]="{'is-invalid': fg.email.touched && fg.email.invalid}" formControlName="email" placeholder="email">
+                </div>
+                <ng-container *ngIf="fg.email.touched && fg.email.invalid">
+                    <div class="invalid" *ngIf="fg.email.errors?.required">Required</div>
+                    <small *ngIf="fg.email.errors?.pattern" class="invalid">Please enter valid mail</small>
+                </ng-container>
+            </div>
+            <div class="mb-3">
+                <div class="input-group">
+                    <input type="{{isPasswordVisible ? 'text':'password'}}" class="form-control" 
+                    [ngClass]="{'is-invalid': fg.password.touched && fg.password.invalid}" formControlName="password" placeholder="password">
+                    <span class="input-group-text">
+                        <i class="c-pointer" [class]="isPasswordVisible ? 'bi-eye-slash' : 'bi-eye'" (click)="isPasswordVisible = !isPasswordVisible"></i>
+                    </span>
+                </div>
+                <ng-container *ngIf="fg.password.touched && fg.password.invalid">
+                    <small class="invalid" *ngIf="fg.password.errors?.required">Required</small>
+                </ng-container>
+            </div>
+        </div>
+        <button class="btn btn-primary" [ngClass]="{'disabled' : formGroup.invalid || isSubmitted}" (click)="onLogin()">
+            <span *ngIf="isSubmitted" class="spinner-border spinner-border-sm me-2"></span>Login</button>
+      </form>
+    </div>
+  </div>

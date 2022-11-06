@@ -1,0 +1,10 @@
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid d-flex justify-content-end">
+            <button type="button" class="btn btn-primary me-3" [routerLink]="['/to-do']">List</button>
+            <button type="button" class="btn btn-primary" [routerLink]="['/to-do/add']">Add</button>
+            <button type="button" class="btn btn-link" (click)="logout()">Logout</button>
+        </div>
+      </nav>
+    <router-outlet></router-outlet>
+</div>
